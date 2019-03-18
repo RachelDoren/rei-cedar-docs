@@ -18,40 +18,39 @@ new Vue({
 
 
 // user would need to supply a name for the sandbox, any dependencies, and the example .vue code
-export default function makeMeASandbox(name, dependencies, code, scriptOverride) {
+export default function makeMeASandbox(data) {
 
-
-//
+console.log(data)
+// This (sh/w)ould work for instances like cdr-grid if used as follows:
 // name="CdrRow, CdrCol" dependencies= {"@rei/cdr-grid": "1.0.0"}
   const scriptTag = `<script>
-import { ${name} } from "${Object.keys(dependencies)[0]}";
+import { ${data.name} } from "${Object.keys(data.dependencies)[0]}";
 
 export default {
   name: "App",
   components: {
-    ${name}
+    ${data.name}
   }
 };
 </script>
 `
-  console.log({name, dependencies, code, scriptOverride})
 
 
   const parameters = getParameters({
     files: {
       'index.js': {
-        content: index,
+        content: data.indexOverride || index,
       },
       'App.vue': {
-        content: '<template>' + code + '</template>' + (scriptOverride || scriptTag),
+        content: '<template>\n' + data.code + '\n</template>\n' + (data.scriptOverride || scriptTag),
       },
       'package.json': {
         content: {
-          "name": name,
+          "name": data.title || data.name,
           "dependencies": {
             "@rei/cdr-assets": "0.3.0",
             "vue": "2.5.16",
-            ...dependencies
+            ...data.dependencies
           }
         },
       },

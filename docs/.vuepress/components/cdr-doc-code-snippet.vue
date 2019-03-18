@@ -34,8 +34,8 @@
           View in repository
         </span>
       </div>
-      <div class="cdr-doc-code-snippet__action-wrapper">
-        <a class="cdr-doc-code-snippet__action" :href="sandboxHreff" target="_blank" rel="noopener noreferrer">
+      <div class="cdr-doc-code-snippet__action-wrapper" v-if="sandboxHrefComputed">
+        <a class="cdr-doc-code-snippet__action" :href="sandboxHrefComputed" target="_blank" rel="noopener noreferrer">
           <img class="cdr-doc-code-snippet__action-icon" :src="$withBase(`/CodeSandbox@2x.png`)" alt="View in code sandbox"/>
         </a>
         <span class="cdr-doc-code-snippet__tooltip cdr-doc-code-snippet__tooltip--show-on-hover">
@@ -107,10 +107,8 @@ export default {
     this.setCodeToggleText();
   },
   computed: {
-    // TODO: come up with a better name for this (or rename sandbox-href everywhere else?)
-    sandboxHreff() {
-      // TODO: figure out better way to pass the template code into this component. cdr-doc-example-code-pair seems to be structured such that it can accept multiple slots, but I am not sure if that is being used anywhere?
-      return this.sandboxHref || (this.sandboxData && buildSandbox(this.sandboxData.name, this.sandboxData.dependencies, this.sandboxTemplates.default, this.sandboxData.scriptOverride));
+    sandboxHrefComputed() {
+      return this.sandboxHref || (this.sandboxData && buildSandbox(this.sandboxData));
     }
   },
   methods: {
