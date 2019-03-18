@@ -108,7 +108,7 @@ export default {
   },
   computed: {
     sandboxHrefComputed() {
-      return this.sandboxHref || (this.sandboxData && buildSandbox(this.sandboxData));
+      return this.sandboxHref || buildSandbox(this.sandboxData);
     }
   },
   methods: {

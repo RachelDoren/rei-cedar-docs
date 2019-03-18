@@ -19,21 +19,22 @@ new Vue({
 
 // user would need to supply a name for the sandbox, any dependencies, and the example .vue code
 export default function makeMeASandbox(data) {
+  if(!data.name || !data.dependencies || !data.code) return false
 
-console.log(data)
-// This (sh/w)ould work for instances like cdr-grid if used as follows:
-// name="CdrRow, CdrCol" dependencies= {"@rei/cdr-grid": "1.0.0"}
-  const scriptTag = `<script>
-import { ${data.name} } from "${Object.keys(data.dependencies)[0]}";
+  console.log(data)
+  // This (sh/w)ould work for instances like cdr-grid if used as follows:
+  // name="CdrRow, CdrCol" dependencies= {"@rei/cdr-grid": "1.0.0"}
+    const scriptTag = `<script>
+  import { ${data.name} } from "${Object.keys(data.dependencies)[0]}";
 
-export default {
-  name: "App",
-  components: {
-    ${data.name}
-  }
-};
-</script>
-`
+  export default {
+    name: "App",
+    components: {
+      ${data.name}
+    }
+  };
+  </script>
+  `
 
 
   const parameters = getParameters({
