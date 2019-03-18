@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <cdr-doc-code-snippet :copy-button="copyButton" :line-numbers="lineNumbers" :max-height="codeMaxHeight" :repository-href="repositoryHref" :sandbox-href="sandboxHref" :code-toggle="codeToggle" :hide-code="hideCode">
+    <cdr-doc-code-snippet :copy-button="copyButton" :line-numbers="lineNumbers" :max-height="codeMaxHeight" :repository-href="repositoryHref" :sandbox-href="sandboxHref" :sandbox-data="sandboxData" :sandbox-templates="templateSources" :code-toggle="codeToggle" :hide-code="hideCode">
       <slot :name="slotNames[0]"/> <!-- Only display the code snippet for the first (or only) slot content -->
     </cdr-doc-code-snippet>
   </div>
@@ -100,6 +100,10 @@
       sandboxHref: {
         default: false,
         type: [String, Boolean]
+      },
+      sandboxData: {
+        default: false,
+        type: [Object, Boolean]
       },
       codeToggle: {
         default: true,

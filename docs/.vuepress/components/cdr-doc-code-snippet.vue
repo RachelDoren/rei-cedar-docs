@@ -35,7 +35,7 @@
         </span>
       </div>
       <div class="cdr-doc-code-snippet__action-wrapper">
-        <a class="cdr-doc-code-snippet__action" :href="sandboxHref" target="_blank" rel="noopener noreferrer" v-if="sandboxHref">
+        <a class="cdr-doc-code-snippet__action" :href="sandboxHreff" target="_blank" rel="noopener noreferrer">
           <img class="cdr-doc-code-snippet__action-icon" :src="$withBase(`/CodeSandbox@2x.png`)" alt="View in code sandbox"/>
         </a>
         <span class="cdr-doc-code-snippet__tooltip cdr-doc-code-snippet__tooltip--show-on-hover">
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import buildSandbox from '../buildSandbox';
 export default {
   name: 'CdrDocCodeSnippet',
   props: {
@@ -70,6 +71,14 @@ export default {
     repositoryHref: {
       default: false,
       type: [String, Boolean]
+    },
+    sandboxData: {
+      default: false,
+      type: [Object, Boolean]
+    },
+    sandboxTemplates: {
+      default: false,
+      type: [Object, Boolean]
     },
     sandboxHref: {
       default: false,
@@ -96,6 +105,13 @@ export default {
   created: function() {
     this.codeHidden = this.hideCode;
     this.setCodeToggleText();
+  },
+  computed: {
+    // TODO: come up with a better name for this (or rename sandbox-href everywhere else?)
+    sandboxHreff() {
+      // TODO: figure out better way to pass the template code into this component. cdr-doc-example-code-pair seems to be structured such that it can accept multiple slots, but I am not sure if that is being used anywhere?
+      return this.sandboxHref || (this.sandboxData && buildSandbox(this.sandboxData.name, this.sandboxData.dependencies, this.sandboxTemplates.default, this.sandboxData.scriptOverride));
+    }
   },
   methods: {
     setCodeToggleText() {
