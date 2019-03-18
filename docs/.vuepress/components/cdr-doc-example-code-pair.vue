@@ -135,7 +135,7 @@
         return this._uid;
       },
       sandboxDataComputed() {
-        return Object.assign({}, this.sandboxData, {code: this.sandboxCode, title: this.sandboxTitle})
+        return Object.assign({}, this.sandboxData, {code: this.sandboxCode})
       },
       sandboxCode() {
         return this.slotNames.map(label => this.templateSources[label]).join('\n')
