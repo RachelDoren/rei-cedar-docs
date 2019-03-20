@@ -52,7 +52,8 @@
 </template>
 
 <script>
-import buildSandbox from '../buildSandbox';
+import buildSandbox from '../../../utils/buildSandbox';
+
 export default {
   name: 'CdrDocCodeSnippet',
   props: {
