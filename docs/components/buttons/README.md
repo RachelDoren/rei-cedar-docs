@@ -92,8 +92,8 @@
   "sandboxData": {
     "name": "CdrButton",
     "dependencies": { "@rei/cdr-button": "1.0.3", "@rei/cdr-icon": "^2.0.0"  },
-    "loadComponentCss": true,
-    "loadIcon": true
+    "loadComponentCss": "true",
+    "loadIcon": "true"
   },
   "versions": [
     {
