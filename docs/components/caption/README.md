@@ -79,7 +79,7 @@
   ],
   "sandboxData": {
     "name": "CdrCaption",
-    "dependencies": { "@rei/cdr-caption": "1.0.1" },
+    "dependencies": { "@rei/cdr-caption": "^1.0.0" },
     "loadComponentCss": "true",
     "loadImg": "true"
   },
