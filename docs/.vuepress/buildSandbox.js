@@ -64,6 +64,8 @@ new Vue({
       },
       'App.vue': {
         // TODO: maybe make the container div centered or something?
+        // TODO: how to handle adding stuff to style tag? will need to pass it twice?
+        // TODO: how to handle data that is currently pulled from the front-matter? will need to pass it twice?
         content: `<template>\n<div>\n\n${data.code}\n</div>\n</template>\n\n<script>\n${data.scriptOverride || scriptTag}\n</script>`
       },
       'package.json': {
@@ -71,11 +73,9 @@ new Vue({
           "name": data.name,
           "description": "TODO: put description of each code example here",
           "dependencies": {
-            "@rei/cdr-assets": "0.3.0",
+            "@rei/cdr-assets": "^0.3.0",
             "vue": "2.5.16",
             ...dependencies
-            // TODO: handle loading image/icon here
-            // TODO: it would be super cool if this could somehow infer the latest version for each component. Not really an issue if we go to a mono-repo.
           }
         },
       },
