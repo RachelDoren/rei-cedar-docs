@@ -1,24 +1,41 @@
 import { getParameters } from 'codesandbox/lib/api/define';
 
-
-// TODO: some way to indicate that the icon sprite needs to be loaded?
+// name: String, the name of the component(s). This must match what the package exports  (i.e, CdrComponent not cdr-component). for packages that export multiple components, separate the names with a comma (i.e, "CdrMainComponent, CdrSubComponent")
+// dependencies: Object, should be an object with a single key value pair like `{ "@rei/cdr-component": "1.0.0"}`. If your component has peerDeps, they should be added here. If using the loadImg or loadIcon options, those deps and css improts will automatically be added
+// loadComponentCss: Boolean, whether or not the package has a CSS file that needs to be loaded. Will be inferred based on the dependency name
+// loadIcon: Boolean, if your component or examples needs to use cdr-icon or cdr-icon-sprite, set this value to `true`
+// LoadImg: Boolean, if your component or examples needs to use cdr-img, set this value to `true`
 
 export default function makeMeASandbox(data) {
   if(!data.name || !data.dependencies || !data.code) return false
 
+  const mainDependency = Object.keys(data.dependencies)[0]
+  const componentPath = mainDependency.split("/")[1];
+  const componentCss = `import "@rei/${componentPath}/dist/${componentPath}.css"`;
 
+  // TODO: maybe a cleaner way to do this?
+  let dependencies = data.dependencies
+  if (data.loadImg) dependencies["@rei/cdr-img"] = "^1.0.0"
+  if (data.loadIcon) dependencies["@rei/cdr-icon"] = "^2.0.0"
 
 // TODO: investigate better templating for scriptTag/index
-  const scriptTag = `import { ${data.name} } from "${Object.keys(data.dependencies)[0]}";
-${data.loadIconSprite ? 'import { CdrIconSprite } from "@rei/cdr-icon"' : ''}
+  const scriptTag = `import { ${data.name} } from "${mainDependency}";
+${data.loadIcon ? 'import { CdrIcon, CdrIconSprite } from "@rei/cdr-icon"' : ''}
+${data.loadImg ? 'import { CdrImg } from "@rei/cdr-img"' : ''}
+
 export default {
   name: "App",
   components: {
     ${data.name}
-    ${data.loadIconSprite ? ', CdrIconSprite' : ''}
+    ${data.loadIcon ? ', CdrIconSprite, CdrIcon' : ''}
+    ${data.loadImg ? ', CdrImg' : ''}
   }
 };`
 
+
+
+
+// TODO: switch cssImports to "loacComponentCss" maybe?
   const index = `import Vue from "vue";
 import App from "./App";
 
@@ -26,6 +43,9 @@ import "@rei/cdr-assets/dist/cdr-core.css";
 import "@rei/cdr-assets/dist/cdr-fonts.css";
 
 ${data.cssImports || ''}
+${data.loadComponentCss ? componentCss : ''}
+${data.loadIcon ? 'import "@rei/cdr-icon/dist/cdr-icon.css";' : ''}
+${data.loadImg ? 'import "@rei/cdr-img/dist/cdr-img.css";' : ''}
 
 new Vue({
   el: "#app",
@@ -40,7 +60,8 @@ new Vue({
         content: data.indexOverride || index,
       },
       'App.vue': {
-        content: `<template>\n${data.code}</template>\n\n<script>\n${data.scriptOverride || scriptTag}\n</script>`
+        // TODO: maybe make the container div centered or something?
+        content: `<template>\n<div>\n\n${data.code}\n</div>\n</template>\n\n<script>\n${data.scriptOverride || scriptTag}\n</script>`
       },
       'package.json': {
         content: {
@@ -49,7 +70,9 @@ new Vue({
           "dependencies": {
             "@rei/cdr-assets": "0.3.0",
             "vue": "2.5.16",
-            ...data.dependencies
+            ...dependencies
+            // TODO: handle loading image/icon here
+            // TODO: it would be super cool if this could somehow infer the latest version for each component. Not really an issue if we go to a mono-repo.
           }
         },
       },
