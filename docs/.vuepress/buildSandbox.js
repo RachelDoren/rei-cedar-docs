@@ -6,7 +6,7 @@ import { getParameters } from 'codesandbox/lib/api/define';
 // loadIcon: Boolean, if your component or examples needs to use cdr-icon or cdr-icon-sprite, set this value to `true`
 // LoadImg: Boolean, if your component or examples needs to use cdr-img, set this value to `true`
 
-export default function makeMeASandbox(data) {
+export default function makeMeASandbox(data, model) {
   if(!data.name || !data.dependencies || !data.code) return false
 
   const mainDependency = Object.keys(data.dependencies)[0]
@@ -29,6 +29,9 @@ export default {
     ${data.name}
     ${data.loadIcon ? ', CdrIconSprite, CdrIcon' : ''}
     ${data.loadImg ? ', CdrImg' : ''}
+  },
+  data() {
+    return ${JSON.stringify(model)}
   }
 };`
 

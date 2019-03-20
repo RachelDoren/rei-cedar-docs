@@ -91,7 +91,11 @@ export default {
     hideCode: {
       default: false,
       type: Boolean
-    }
+    },
+    model: {
+      type: Object,
+      default: () => {}
+    },
   },
   data: function() {
     return {
@@ -108,7 +112,7 @@ export default {
   },
   computed: {
     sandboxHrefComputed() {
-      return this.sandboxHref || buildSandbox(this.sandboxData);
+      return this.sandboxHref || buildSandbox(this.sandboxData, this.model);
     }
   },
   methods: {
