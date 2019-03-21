@@ -35,7 +35,8 @@
   ],
   "sandboxData": {
     "name": "CdrText",
-    "dependencies": { "@rei/cdr-text": "1.0.0" }
+    "dependencies": { "@rei/cdr-text": "^1.0.0" },
+    "loadComponentCss": "false"
   },
   "versions": [
     {
