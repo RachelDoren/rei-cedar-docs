@@ -36,7 +36,7 @@ export default {
 };`
 
 
-
+// TODO: do we need to load roboto/sentinel/etc.?
 
 // TODO: switch cssImports to "loacComponentCss" maybe?
   const index = `import Vue from "vue";
