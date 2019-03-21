@@ -31,7 +31,7 @@ export default {
     ${data.loadImg ? ', CdrImg' : ''}
   },
   data() {
-    return ${JSON.stringify(model)}
+    return ${model ? JSON.stringify(model) : "{}"}
   }
 };`
 
