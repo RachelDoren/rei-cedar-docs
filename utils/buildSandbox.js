@@ -34,8 +34,7 @@ export default function makeMeASandbox(data, model) {
         content: buildIndexFile(data, componentCss),
       },
       'App.vue': {
-
-        content: `<template>\n<div>\n\n${data.code}\n</div>\n</template>\n\n<script>\n${buildScriptTag(data, model, mainDependency)}\n</script>`
+        content: `<template>\n<div style="margin: 32px;">\n\n${data.code}\n</div>\n</template>\n\n<script>\n${buildScriptTag(data, model, mainDependency)}\n</script>`
       },
       'package.json': {
         content: {
