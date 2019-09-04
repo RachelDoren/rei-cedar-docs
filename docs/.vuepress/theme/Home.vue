@@ -146,18 +146,7 @@
           </div>
         </cdr-col>
         <cdr-col>
-          <div class="home-card cdr-space-inset-one-x">
-            <cdr-text
-              tag="h3"
-              modifier="heading-small-static"
-              class="cdr-mb-space-one-x"
-            >Contribute to Cedar</cdr-text>
-            <cdr-text class="cdr-mb-space-one-x">The Cedar team welcomes contributions from the community. Learn how to become a pilot contributor.  </cdr-text>
-            <cdr-link :href="$withBase('/getting-started/as-an-adopter/?active-link=contributions')" modifier="standalone">Help build Cedar</cdr-link>
-          </div>
-        </cdr-col>
-        <cdr-col>
-          <div class="home-card cdr-space-inset-one-x">
+           <div class="home-card cdr-space-inset-one-x">
             <cdr-text
               tag="h3"
               modifier="heading-small-static"
