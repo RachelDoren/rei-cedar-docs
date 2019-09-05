@@ -130,6 +130,8 @@ The Cedar spacing system is based on 16px units. The scaling system uses fractio
 
 <br>
 
+For more information about using Cedar's spacing system, visit the Spacing article. <Comment - Add link to the Spacing layout article when it is published. I'm guessing the link will be something like https://rei.github.io/rei-cedar-docs/layout/spacing/>
+
 ### Inset
 
 An inset is intended to provide space within the content container. It defines how the typography, images, icons, and any content is separated from the edge. Cedar provides different options for inset tokens:
