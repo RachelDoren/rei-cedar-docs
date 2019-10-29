@@ -1,6 +1,6 @@
 <template>
   <div class="cdr-doc-example-code-pair" :class="{'cdr-doc-example-code-pair--not-interactive': !interactive }">
-    <div class="cdr-doc-example-code-pair__item"
+    <div v-if="!hideExample" class="cdr-doc-example-code-pair__item"
           :class="'cdr-doc-example-code-pair__item-background--' + backgroundToggleStates[slotLabel]"
           v-for="slotContent, slotLabel in $slots">
       <div class="cdr-doc-example-code-pair__item-background-toggle" v-if="backgroundToggle">
@@ -118,6 +118,10 @@
         type: Boolean
       },
       hideCode: {
+        default: true,
+        type: Boolean
+      },
+      hideExample: {
         default: true,
         type: Boolean
       },
