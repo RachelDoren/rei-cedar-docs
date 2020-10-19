@@ -146,7 +146,8 @@ module.exports = {
         text: "Icons",
         items: [
           { text: "Resources", link: "/icons/resources/" },
-          { text: "Iconography", link: "/icons/iconography/" }
+          { text: "Iconography", link: "/icons/iconography/" },
+          { text: "All Icons", link: "/icons/all-icons/" },
         ]
       },
       {
@@ -154,6 +155,7 @@ module.exports = {
         items: [
           { text: "Overview", link: "/tokens/overview/" },
           { text: "All Tokens", link: "/tokens/all-tokens/" },
+          { text: "Deprecated Tokens", link: "/tokens/deprecated/" },
         ]
       },
       {text: "Report an Issue", link: 'https://airtable.com/shr3wSPCYQbycVx7i'},

@@ -125,7 +125,7 @@
 
 ## Inline Icon Components
 
-The inline icon components are the recommended method for using Cedar icons in a Vue application. Cedar exports a component version of every SVG Icon in the [Cedar Icon Library](https://rei.github.io/cedar-icons/#/). These components are named using PascalCase, for example `account-profile` becomes `IconAccountProfile` or `camping` becomes `IconCamping`.
+The inline icon components are the recommended method for using Cedar icons in a Vue application. Cedar exports a component version of every SVG Icon in the [Cedar Icon Library](#icon-library). These components are named using PascalCase, for example `account-profile` becomes `IconAccountProfile` or `camping` becomes `IconCamping`.
 
 <cdr-doc-example-code-pair repository-href="/src/components/icon" :sandbox-data="Object.assign({}, $page.frontmatter.sandboxData, {components: 'IconAccountProfile, IconCamera'})">
 
@@ -294,7 +294,9 @@ When the mouse and keyboard are the primary input methods or when icons are pair
 
 ## Icon Library
 
-For a list of all available icons and their names, visit the [Cedar Icon Library](https://rei.github.io/cedar-icons/#/).
+To generate a sprite sheet or download individual icon assets, visit the [Cedar Icon Library](https://rei.github.io/cedar-icons/#/).
+
+<icons-page />
 
 ## Behavior
 
