@@ -18,14 +18,14 @@
       "image": "tooltip/tooltip_consistency_do.png",
       "ratio": "4-3",
       "alt": "Image showing proper tooltip usage",
-      "caption": "Do consistently provide tooltips for unlabeled icons "
+      "caption": "consistently provide tooltips for unlabeled icons."
     },
     {
       "type": "dont",
       "image": "tooltip/tooltip_consistency_dont.png",
       "ratio": "4-3",
       "alt": "Image showing improper tooltip usage",
-      "caption": "Don't provide tooltips for only a subset of icons within a set"
+      "caption": "provide tooltips for only a subset of icons within a set."
     }
   ],
 
@@ -35,14 +35,14 @@
       "image": "tooltip/tooltip_redundancy_do.png",
       "ratio": "4-3",
       "alt": "Image showing proper tooltip usage",
-      "caption": "Do avoid using tooltips when actions are clearly defined"
+      "caption": "avoid using tooltips when actions are clearly defined."
     },
     {
       "type": "dont",
       "image": "tooltip/tooltip_redundancy_dont.png",
       "ratio": "4-3",
       "alt": "Image showing improper tooltip usage",
-      "caption": "Don't provide redundant information with a tooltip"
+      "caption": "provide redundant information with a tooltip."
     }
   ],
 
@@ -111,7 +111,7 @@
 
 # Overview
 
-CdrTooltip is a wrapper component that accepts a trigger element and tooltip content. When the trigger element is hovered or focused, the tooltip content is rendered. Event bindings between the trigger and the tooltip are set up automatically. The tooltip will dynamically update it's `position` property to ensure that it renders on screen, though this functionality can be disabled by setting `autoPosition` to `false`.
+CdrTooltip is a wrapper component that accepts a trigger element and tooltip content. When the trigger element is hovered or focused, the tooltip content is rendered. Event bindings between the trigger and the tooltip are set up automatically. The tooltip will dynamically update its `position` property to ensure that it renders on screen, though this functionality can be disabled by setting `autoPosition` to `false`.
 
 <cdr-doc-example-code-pair repository-href="/src/components/CdrTooltip"
 :sandbox-data="$page.frontmatter.sandboxData" >
@@ -135,10 +135,10 @@ To ensure your usage of this component complies with accessibility guidelines yo
 - Set an `id` property on the CdrTooltip. The component will automatically link that `id` to the trigger element.
 - Content passed into the `trigger` slot must be an actionable element such as a button.
 - Tooltip content should directly describe the element that triggers it. For example, providing more information or context about what an input does, or adding a textual description of an icon-only buttton.
-- Avoid rich content. Formatting such as bold text, italics, headings, icons, etc. will not be conveyed through aria-describedby or aria-labelledby.
-- No interactive content. Any interactive content such as links or buttons should not be placed within a tooltip.
-- Do not put essential information in tooltips
-- Do not use a timeout to hide the tooltip
+- Avoid rich content. Formatting such as bold text, italics, headings, icons, etc. will not be conveyed through `aria-describedby` or `aria-labelledby`.
+- Do not inlcude interactive content. Any interactive content such as links or buttons should not be placed within a tooltip.
+- Do not put essential information in tooltips.
+- Do not use a timeout to hide the tooltip.
 
 This component complies with WCAG guidelines by:
 
@@ -153,7 +153,7 @@ This component complies with WCAG guidelines by:
 
 ## Use when
 
-When an interface action is expressed solely through iconography, use a tooltip to clarify the action. The descriptions provided by tooltips should only contain one or two words: “close”, “clear”, or “save” are common examples.
+When an interface action is expressed solely through iconography, use a tooltip to clarify the action. The descriptions provided by tooltips should only contain one or two words: “close,” “clear,” or “save” are common examples.
 
 Examples:
 - A text input uses an icon to show that the field can be cleared. Use a tooltip to describe the action: “Clear”
@@ -169,7 +169,7 @@ Examples:
 - Don’t use a tooltip to describe a button that already describes itself through copy
 
 Example:
-- A credit card security field needs to describe, in detail, where to find the card information. A popover should be used to contain the graphic and card-specific details, not a tooltip
+- A credit card security field needs to describe, in detail, where to find the card information. A popover should be used to contain the graphic and card-specific details, not a tooltip.
 
 
 ## Do / Don't
